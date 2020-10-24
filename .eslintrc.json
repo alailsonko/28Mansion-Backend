@@ -5,6 +5,7 @@
   } ,
   "rules": {
     "@typescript-eslint/no-redeclare": "off",
+    "@typescript-eslint/no-floating-promises": "off",
     "no-unused-vars": ["error", {
       "argsIgnorePattern": "_"
     }],

@@ -2,5 +2,20 @@
   "extends": "standard-with-typescript",
   "parserOptions": {
     "project": "./tsconfig.json"
+  } ,
+  "rules": {
+    "@typescript-eslint/no-redeclare": "off",
+    "no-unused-vars": ["error", {
+      "argsIgnorePattern": "_"
+    }],
+    "camelcase":"off",
+    "class-methods-use-this": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never"
+      }
+    ]
   }
 }

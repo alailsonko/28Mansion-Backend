@@ -1,0 +1,8 @@
+{
+  "name": "28Mansion-Backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/alailsonko/28Mansion-Backend.git",
+  "author": "alailsonko <aalailson3@gmail.com>",
+  "license": "MIT"
+}

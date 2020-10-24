@@ -11,6 +11,7 @@
     "project": "./tsconfig.json"
   } ,
   "rules": {
+    "jest/no-done-callback": "off",
     "@typescript-eslint/no-redeclare": "off",
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",

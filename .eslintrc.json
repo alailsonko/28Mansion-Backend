@@ -1,11 +1,19 @@
 {
-  "extends": "standard-with-typescript",
+  "extends": [
+    "standard-with-typescript",
+     "eslint:recommended",
+     "plugin:import/errors",
+     "plugin:import/warnings",
+     "plugin:import/typescript",
+     "plugin:jest/recommended"
+  ],
   "parserOptions": {
     "project": "./tsconfig.json"
   } ,
   "rules": {
     "@typescript-eslint/no-redeclare": "off",
     "@typescript-eslint/no-floating-promises": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
     "no-unused-vars": ["error", {
       "argsIgnorePattern": "_"
     }],
@@ -15,8 +23,20 @@
       "error",
       "ignorePackages",
       {
-        "ts": "never"
+        "ts": "never",
+        "js": "never"
       }
     ]
+  },
+  "settings": {
+    "import/extensions": [".js", ".ts"],
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".js"]
+    },
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts"]
+      }
+    }
   }
 }

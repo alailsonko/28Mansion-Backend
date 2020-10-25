@@ -7,5 +7,11 @@
         "allowJs": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-    }
+    },
+    "include": [
+      "src"
+    ],
+    "exclude": [
+      "src/**/__test__"
+    ]
 }

@@ -3,8 +3,20 @@ import server from '../../server'
 
 const request = supertest(server)
 
+beforeEach(async () => {
+  try {
+    Promise.resolve(server.close())
+  } catch (error) {
+    console.log(error)
+  }
+})
+
 afterAll(async () => {
-  Promise.resolve(server.close())
+  try {
+    Promise.resolve(server.close())
+  } catch (error) {
+    console.log(error)
+  }
 })
 
 describe('Test route /signup', () => {

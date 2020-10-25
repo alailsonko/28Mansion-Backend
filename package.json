@@ -24,6 +24,7 @@
     "lint-staged": "^10.4.2",
     "supertest": "^5.0.0",
     "ts-jest": "^26.4.2",
+    "ts-node": "^9.0.0",
     "ts-node-dev": "^1.0.0",
     "typescript": "^4.0.3"
   },
@@ -33,11 +34,13 @@
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand --detectOpenHandles",
     "test:verbose": "jest --passWithNoTests --runInBand",
     "test:unit": "yarn test -- --watch -c jest-unit-config.js",
-    "test:integration": "yarn test -- --watch --detectOpenHandles -c jest-integration-config.js",
+    "test:integration": "yarn test -- --watch --detectOpenHandles --unhandled-rejections=strict -c jest-integration-config.js",
     "test:staged": "yarn test -- --findRelatedTests",
-    "test:ci": "yarn test -- --coverage"
+    "test:ci": "yarn test -- --coverage",
+    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "pg": "^8.4.1",

@@ -17,12 +17,18 @@ interface HttpResponse {
 class CreateUserService {
   execute (req: HttpRequest): HttpResponse {
     try {
-      const { username } = req.body as AddAccount
+      const { username, email } = req.body as AddAccount
 
       if (!req.body.username) {
         return {
           statusCode: 400,
           statusMessage: `missing parameter ${username}`
+        }
+      }
+      if (!req.body.email) {
+        return {
+          statusCode: 400,
+          statusMessage: `missing parameter ${email}`
         }
       }
 

@@ -31,6 +31,12 @@ class CreateUserService {
           statusMessage: `missing parameter ${email}`
         }
       }
+      if (!req.body.password) {
+        return {
+          statusCode: 400,
+          statusMessage: `missing parameter ${email}`
+        }
+      }
 
       console.log({ msg: 'ok' })
       return

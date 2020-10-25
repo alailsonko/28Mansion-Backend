@@ -17,7 +17,7 @@ interface HttpResponse {
 class CreateUserService {
   execute (req: HttpRequest): HttpResponse {
     try {
-      const { username, email } = req.body as AddAccount
+      const { username, email, password, passwordConfirmation } = req.body as AddAccount
 
       if (!req.body.username) {
         return {
@@ -34,7 +34,13 @@ class CreateUserService {
       if (!req.body.password) {
         return {
           statusCode: 400,
-          statusMessage: `missing parameter ${email}`
+          statusMessage: `missing parameter ${password}`
+        }
+      }
+      if (!req.body.passwordConfirmation) {
+        return {
+          statusCode: 400,
+          statusMessage: `missing parameter ${passwordConfirmation}`
         }
       }
 

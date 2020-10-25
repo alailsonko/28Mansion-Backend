@@ -1,5 +1,6 @@
 {
   "name": "28-mansion-backend",
+  "type": "commonjs",
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/alailsonko/28Mansion-Backend.git",

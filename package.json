@@ -31,10 +31,10 @@
   "scripts": {
     "dev:server": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "start": "ts-node src/server.ts",
-    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand --detectOpenHandles",
+    "test": "jest --passWithNoTests --verbose --runInBand --detectOpenHandles",
     "test:verbose": "jest --passWithNoTests --runInBand",
     "test:unit": "yarn test -- --watch --verbose -c jest-unit-config.js",
-    "test:integration": "yarn test -- --watch --verbose --detectOpenHandles --unhandled-rejections=strict -c jest-integration-config.js",
+    "test:integration": "yarn test -- --watch --detectOpenHandles --unhandled-rejections=strict -c jest-integration-config.js",
     "test:staged": "yarn test -- --findRelatedTests",
     "test:ci": "yarn test -- --coverage",
     "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js"

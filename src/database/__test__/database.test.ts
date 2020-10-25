@@ -5,6 +5,8 @@ import connection from '..'
 import { getConnection, getRepository } from 'typeorm'
 import User from '../entities/User'
 
+let id = null
+console.log(id)
 beforeAll(async () => {
   await connection
 })
@@ -13,8 +15,14 @@ afterAll(async () => {
   await getConnection().close()
 })
 
-beforeEach(async () => {
-  await clear
+afterAll(async () => {
+  console.log(id)
+  await getConnection()
+    .createQueryBuilder()
+    .delete()
+    .from(User)
+    .where('id = :id', { id: id })
+    .execute()
 })
 
 describe('Database test', () => {
@@ -22,21 +30,12 @@ describe('Database test', () => {
     const usersRepository = getRepository(User)
     const user = usersRepository.create({
       username: 'valid_name',
-      email: 'validddd@mail.com',
+      email: 'valid@mail.com',
       password: 'valid_password'
     })
 
     const response = await usersRepository.save(user)
-    console.log(response)
+    id = response.id
+    expect(response.username).toBe('valid_name')
   })
 })
-
-const clear = async () => {
-  const connection = getConnection()
-  const entities = connection.entityMetadatas
-
-  entities.forEach(async (entity) => {
-    const repository = connection.getRepository(entity.name)
-    await repository.query(`DELETE FROM ${entity.tableName}`)
-  })
-}

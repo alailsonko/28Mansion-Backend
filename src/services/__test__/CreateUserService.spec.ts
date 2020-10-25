@@ -29,4 +29,18 @@ describe('CreateUserService', () => {
 
     expect(response.statusCode).toBe(400)
   })
+  test('should return 400 if password is missing', () => {
+    const sut = new CreateUserService()
+
+    const response = sut.execute({
+      body: {
+        username: 'valid_username',
+        email: 'valid_email@mail.com',
+        password: '',
+        passwordConfirmation: 'valid_password'
+      }
+    })
+
+    expect(response.statusCode).toBe(400)
+  })
 })

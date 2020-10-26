@@ -1,4 +1,7 @@
 import validator from 'validator'
+import { hash } from 'bcryptjs'
+import { getRepository } from 'typeorm'
+import User from '../database/entities/User'
 
 // interface AddAccount {
 //   username: string
@@ -13,13 +16,24 @@ interface HttpRequest {
 
 interface HttpResponse {
   statusCode: number
-  statusMessage: string
+  statusMessage: string | any
 }
 
 class CreateUserService {
-  execute (req: HttpRequest): HttpResponse {
+  async execute (req: HttpRequest): Promise<HttpResponse> {
     try {
-      // const { username, email, password, passwordConfirmation } = req.body as AddAccount
+      const usersRepository = getRepository(User)
+
+      const checkUserExists = await usersRepository.findOne({
+        where: { email: req.body.email }
+      })
+
+      if (checkUserExists) {
+        return {
+          statusCode: 400,
+          statusMessage: 'User already exists'
+        }
+      }
 
       const requiredFields = ['username', 'email', 'password', 'passwordConfirmation']
 
@@ -46,8 +60,22 @@ class CreateUserService {
           statusMessage: 'email invalid'
         }
       }
+      const hashedPassword = await hash(req.body.password, 8)
 
-      return
+      const user = usersRepository.create({
+        username: req.body.username,
+        email: req.body.email,
+        password: hashedPassword
+      })
+
+      await usersRepository.save(user)
+
+      return {
+        statusCode: 200,
+        statusMessage: {
+          user
+        }
+      }
     } catch (error) {
       console.log(error)
     }

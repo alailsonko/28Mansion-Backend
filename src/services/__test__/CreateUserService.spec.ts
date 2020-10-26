@@ -43,4 +43,18 @@ describe('CreateUserService', () => {
 
     expect(response.statusCode).toBe(400)
   })
+  test('should return 400 if passwordConfirmation is missing', () => {
+    const sut = new CreateUserService()
+
+    const response = sut.execute({
+      body: {
+        username: 'valid_username',
+        email: 'valid_email@mail.com',
+        password: 'valid_password',
+        passwordConfirmation: ''
+      }
+    })
+
+    expect(response.statusCode).toBe(400)
+  })
 })

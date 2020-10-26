@@ -1,9 +1,9 @@
-interface AddAccount {
-  username: string
-  email: string
-  password: string
-  passwordConfirmation: string
-}
+// interface AddAccount {
+//   username: string
+//   email: string
+//   password: string
+//   passwordConfirmation: string
+// }
 
 interface HttpRequest {
   body?: any
@@ -17,30 +17,16 @@ interface HttpResponse {
 class CreateUserService {
   execute (req: HttpRequest): HttpResponse {
     try {
-      const { username, email, password, passwordConfirmation } = req.body as AddAccount
+      // const { username, email, password, passwordConfirmation } = req.body as AddAccount
 
-      if (!req.body.username) {
-        return {
-          statusCode: 400,
-          statusMessage: `missing parameter ${username}`
-        }
-      }
-      if (!req.body.email) {
-        return {
-          statusCode: 400,
-          statusMessage: `missing parameter ${email}`
-        }
-      }
-      if (!req.body.password) {
-        return {
-          statusCode: 400,
-          statusMessage: `missing parameter ${password}`
-        }
-      }
-      if (!req.body.passwordConfirmation) {
-        return {
-          statusCode: 400,
-          statusMessage: `missing parameter ${passwordConfirmation}`
+      const requiredFields = ['username', 'email', 'password', 'passwordConfirmation']
+
+      for (const field of requiredFields) {
+        if (!req.body[field]) {
+          return {
+            statusCode: 400,
+            statusMessage: `missing parameter ${field}`
+          }
         }
       }
 

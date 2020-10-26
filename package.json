@@ -1,6 +1,6 @@
 {
   "name": "28-mansion-backend",
-  "private":"true",
+  "private": "true",
   "type": "commonjs",
   "version": "1.0.0",
   "main": "index.js",
@@ -43,18 +43,19 @@
     "test:integration": "yarn test -- --watch --detectOpenHandles --unhandled-rejections=strict -c jest-integration-config.js",
     "test:staged": "yarn test -- --findRelatedTests",
     "test:ci": "yarn test -- --coverage",
-    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
+    "typeorm": "node --require tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "typeorm:prod:revert": "yarn ts-node ./node_modules/typeorm/cli.js migration:revert --config ormconfig.js",
     "typeorm:prod:run": "yarn ts-node ./node_modules/typeorm/cli.js migration:run --config ormconfig.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "ts-node": "^9.0.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "pg": "^8.4.1",
     "reflect-metadata": "^0.1.13",
+    "ts-node": "^9.0.0",
+    "tsconfig-paths": "^3.9.0",
     "typeorm": "^0.2.28",
     "validator": "^13.1.17"
   }

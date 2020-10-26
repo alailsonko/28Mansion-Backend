@@ -1,3 +1,3 @@
-release: node typeorm migration:run
+release: yarn typeorm migration:run
 
 web: node ./dist/server.js

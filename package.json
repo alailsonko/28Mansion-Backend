@@ -1,5 +1,6 @@
 {
   "name": "28-mansion-backend",
+  "private":"true",
   "type": "commonjs",
   "version": "1.0.0",
   "main": "index.js",

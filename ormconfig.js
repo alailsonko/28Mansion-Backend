@@ -1,3 +1,4 @@
+import * as path from 'path'
 const entities = process.env.NODE_ENV === 'development' ? ['./dist/database/entities/*.{js,ts}'] : ['./src/database/entities/*.{js,ts}']
 const migrations = process.env.NODE_ENV === 'development' ? ['./dist/database/migrations/*.{js,ts}'] : ['./src/database/migrations/*.{js,ts}']
 const migrationsDir = process.env.NODE_ENV === 'development' ? './dist/database/migrations' : './src/database/migrations'
@@ -11,7 +12,10 @@ module.exports = {
   password: `${process.env.POSTGRES_PASSWORD}`,
   username: `${process.env.POSTGRES_USERNAME}`,
   database: `${process.env.POSTGRES_DATABASE}`,
-  entities: entities,
+  entities: [
+    // assuming _dirname is your project root
+    path.resolve(__dirname, '**/entities/{.ts,.js}')
+  ],
   migrations: migrations,
   cli: {
     migrationsDir: migrationsDir,

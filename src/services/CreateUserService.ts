@@ -1,3 +1,5 @@
+import validator from 'validator'
+
 // interface AddAccount {
 //   username: string
 //   email: string
@@ -37,7 +39,14 @@ class CreateUserService {
         }
       }
 
-      console.log({ msg: 'ok' })
+      const checkIsEmail = validator.isEmail(req.body.email)
+      if (!checkIsEmail) {
+        return {
+          statusCode: 400,
+          statusMessage: 'email invalid'
+        }
+      }
+
       return
     } catch (error) {
       console.log(error)

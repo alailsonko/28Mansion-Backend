@@ -1,5 +1,5 @@
 const entities = process.env.NODE_ENV === 'development' ? ['./dist/database/entities/*.js'] : ['./src/database/entities/*.ts']
-const migrations = process.env.NODE_ENV === 'development' ? ['./dist/database/migrations/*.js'], : ['./src/database/migrations/*.ts'],
+const migrations = process.env.NODE_ENV === 'development' ? ['./dist/database/migrations/*.js'] : ['./src/database/migrations/*.ts']
 
 module.exports = {
   type: `${process.env.POSTGRES_TYPE}`,

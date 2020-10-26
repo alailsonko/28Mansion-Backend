@@ -14,7 +14,7 @@ module.exports = {
   username: `${process.env.POSTGRES_USERNAME}`,
   database: `${process.env.POSTGRES_DATABASE}`,
   // eslint-disable-next-line no-path-concat
-  entities: '.{src,dist}/**/entities/*.{ts,js}',
+  entities: './{src,dist}/**/entities/*.{ts,js}',
   migrations: migrations,
   cli: {
     migrationsDir: migrationsDir,

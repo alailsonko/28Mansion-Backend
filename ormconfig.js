@@ -15,7 +15,7 @@ module.exports = {
   database: `${process.env.POSTGRES_DATABASE}`,
   entities: [
     // assuming _dirname is your project root
-    path.resolve(__dirname, './**/database/entities/{.ts,.js}')
+    path.join(__dirname, '/**/database/entities/{.ts,.js}')
   ],
   migrations: migrations,
   cli: {

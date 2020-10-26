@@ -1,4 +1,4 @@
-import CreateUserService from '../CreateUserService'
+import SignUpController from '../SignUpController'
 import { getConnection } from 'typeorm'
 import User from '../../database/entities/User'
 
@@ -29,7 +29,7 @@ afterAll(async () => {
 
 describe('CreateUserService', () => {
   test('should return 400 if username is missing', async () => {
-    const sut = new CreateUserService()
+    const sut = new SignUpController()
 
     const response = await sut.execute({
       body: {
@@ -43,7 +43,7 @@ describe('CreateUserService', () => {
     expect(response.statusCode).toBe(400)
   })
   test('should return 400 if email is missing', async () => {
-    const sut = new CreateUserService()
+    const sut = new SignUpController()
 
     const response = await sut.execute({
       body: {
@@ -57,7 +57,7 @@ describe('CreateUserService', () => {
     expect(response.statusCode).toBe(400)
   })
   test('should return 400 if password is missing', async () => {
-    const sut = new CreateUserService()
+    const sut = new SignUpController()
 
     const response = await sut.execute({
       body: {
@@ -71,7 +71,7 @@ describe('CreateUserService', () => {
     expect(response.statusCode).toBe(400)
   })
   test('should return 400 if passwordConfirmation is missing', async () => {
-    const sut = new CreateUserService()
+    const sut = new SignUpController()
 
     const response = await sut.execute({
       body: {
@@ -85,7 +85,7 @@ describe('CreateUserService', () => {
     expect(response.statusCode).toBe(400)
   })
   test('should return 400 if password does not match is missing', async () => {
-    const sut = new CreateUserService()
+    const sut = new SignUpController()
 
     const response = await sut.execute({
       body: {
@@ -99,7 +99,7 @@ describe('CreateUserService', () => {
     expect(response.statusCode).toBe(400)
   })
   test('should return 400 if email is invaid', async () => {
-    const sut = new CreateUserService()
+    const sut = new SignUpController()
 
     const response = await sut.execute({
       body: {
@@ -113,7 +113,7 @@ describe('CreateUserService', () => {
     expect(response.statusCode).toBe(400)
   })
   test('should return 200 should create user is fit requeriments', async () => {
-    const sut = new CreateUserService()
+    const sut = new SignUpController()
 
     const response = await sut.execute({
       body: {

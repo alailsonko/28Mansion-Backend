@@ -20,11 +20,11 @@ interface HttpResponse {
   statusMessage: string | any
 }
 
-interface CreateUserServiceDTO {
+interface SignUpControllerDTO {
   execute: (_: HttpRequest) => Promise<HttpResponse>
 }
 
-class CreateUserService implements CreateUserServiceDTO {
+class SignUpController implements SignUpControllerDTO {
   async execute (req: HttpRequest): Promise<HttpResponse> {
     try {
       await connection
@@ -92,4 +92,4 @@ class CreateUserService implements CreateUserServiceDTO {
   }
 }
 
-export default CreateUserService
+export default SignUpController

@@ -3,6 +3,8 @@
         "outDir": "./dist",
         "module": "commonjs",
         "target": "es6",
+        "esModuleInterop": true,
+        "allowJs": true,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
     },

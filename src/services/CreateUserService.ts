@@ -2,6 +2,7 @@ import validator from 'validator'
 import { hash } from 'bcryptjs'
 import { getRepository } from 'typeorm'
 import User from '../database/entities/User'
+import connection from '../database'
 
 // interface AddAccount {
 //   username: string
@@ -19,9 +20,14 @@ interface HttpResponse {
   statusMessage: string | any
 }
 
-class CreateUserService {
+interface CreateUserServiceDTO {
+  execute: (_: HttpRequest) => Promise<HttpResponse>
+}
+
+class CreateUserService implements CreateUserServiceDTO {
   async execute (req: HttpRequest): Promise<HttpResponse> {
     try {
+      await connection
       const usersRepository = getRepository(User)
 
       const checkUserExists = await usersRepository.findOne({
@@ -70,6 +76,7 @@ class CreateUserService {
 
       await usersRepository.save(user)
 
+      // console.log(user)
       return {
         statusCode: 200,
         statusMessage: {
@@ -77,7 +84,10 @@ class CreateUserService {
         }
       }
     } catch (error) {
-      console.log(error)
+      return {
+        statusCode: 500,
+        statusMessage: error
+      }
     }
   }
 }

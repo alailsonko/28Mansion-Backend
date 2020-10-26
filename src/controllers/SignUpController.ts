@@ -28,7 +28,7 @@ class SignUpController implements SignUpControllerDTO {
   async execute (req: HttpRequest): Promise<HttpResponse> {
     try {
       await connection
-      const usersRepository = await getRepository(User)
+      const usersRepository = getRepository(User)
 
       const checkUserExists = await usersRepository.findOne({
         where: { email: req.body.email }

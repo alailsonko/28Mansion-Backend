@@ -4,6 +4,7 @@ const migrationsDir = process.env.NODE_ENV === 'development' ? './dist/database/
 const entitiesDir = process.env.NODE_ENV === 'development' ? './dist/database/entities' : './src/database/entities'
 
 module.exports = {
+  name: 'default',
   type: `${process.env.POSTGRES_TYPE}`,
   host: `${process.env.POSTGRES_HOST}`,
   port: `${process.env.POSTGRES_PORT}`,

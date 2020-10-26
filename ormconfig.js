@@ -1,4 +1,5 @@
-import * as path from 'path'
+/* eslint-disable no-unused-vars */
+const path = require('path')
 const entities = process.env.NODE_ENV === 'development' ? ['./dist/database/entities/*.{js,ts}'] : ['./src/database/entities/*.{js,ts}']
 const migrations = process.env.NODE_ENV === 'development' ? ['./dist/database/migrations/*.{js,ts}'] : ['./src/database/migrations/*.{js,ts}']
 const migrationsDir = process.env.NODE_ENV === 'development' ? './dist/database/migrations' : './src/database/migrations'

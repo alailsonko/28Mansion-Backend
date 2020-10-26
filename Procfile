@@ -1,3 +1,4 @@
 web: node ./dist/server.js
 
-release: yarn typeorm:prod
+release: yarn typeorm:prod:revert
+release: yarn typeorm:prod:run

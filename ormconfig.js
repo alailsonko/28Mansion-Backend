@@ -11,9 +11,7 @@ module.exports = {
   password: `${process.env.POSTGRES_PASSWORD}`,
   username: `${process.env.POSTGRES_USERNAME}`,
   database: `${process.env.POSTGRES_DATABASE}`,
-  extra: {
-    ssl: true
-  },
+  ssl: true,
   entities: entities,
   migrations: migrations,
   cli: {

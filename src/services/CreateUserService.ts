@@ -30,6 +30,13 @@ class CreateUserService {
         }
       }
 
+      if (req.body.password !== req.body.passwordConfirmation) {
+        return {
+          statusCode: 400,
+          statusMessage: 'password and confirmation must be the same'
+        }
+      }
+
       console.log({ msg: 'ok' })
       return
     } catch (error) {

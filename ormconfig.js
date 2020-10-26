@@ -1,4 +1,4 @@
-const entities = process.env.NODE_ENV === 'development' ? 'dist/database/entities/*.{js,ts}' : 'src/database/entities/*.{js,ts}'
+const entities = process.env.NODE_ENV === 'development' ? './dist/database/entities/*.{js,ts}' : './src/database/entities/*.{js,ts}'
 const migrations = process.env.NODE_ENV === 'development' ? ['./dist/database/migrations/*.{js,ts}'] : ['./src/database/migrations/*.{js,ts}']
 const migrationsDir = process.env.NODE_ENV === 'development' ? './dist/database/migrations' : './src/database/migrations'
 const entitiesDir = process.env.NODE_ENV === 'development' ? './dist/database/entities' : './src/database/entities'

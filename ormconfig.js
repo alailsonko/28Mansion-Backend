@@ -1,5 +1,7 @@
 const entities = process.env.NODE_ENV === 'development' ? ['./dist/database/entities/*.js'] : ['./src/database/entities/*.ts']
 const migrations = process.env.NODE_ENV === 'development' ? ['./dist/database/migrations/*.js'] : ['./src/database/migrations/*.ts']
+const migrationsDir = process.env.NODE_ENV === 'development' ? './dist/database/migrations/' : './src/database/migrations'
+const entitiesDir = process.env.NODE_ENV === 'development' ? './dist/database/entities' : './src/database/entities'
 
 module.exports = {
   type: `${process.env.POSTGRES_TYPE}`,
@@ -11,7 +13,7 @@ module.exports = {
   entities: entities,
   migrations: migrations,
   cli: {
-    migrationsDir: './src/database/migrations',
-    entitiesDir: './src/database/entities'
+    migrationsDir: migrationsDir,
+    entitiesDir: entitiesDir
   }
 }

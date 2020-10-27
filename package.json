@@ -35,9 +35,9 @@
     "typescript": "^4.0.3"
   },
   "scripts": {
-    "start": "node --trace-warnings ./dist/index.js",
+    "start": "node --trace-warnings ./dist/server.js",
     "build": "rimraf dist && tsc",
-    "dev:server": "ts-node-dev --transpile-only --ignore-watch node_modules src/index.ts",
+    "dev:server": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "dev": "ts-node src/index.ts",
     "test": "jest --passWithNoTests --verbose --runInBand --detectOpenHandles",
     "test:verbose": "jest --passWithNoTests --runInBand",

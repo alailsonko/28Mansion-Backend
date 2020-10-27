@@ -17,20 +17,20 @@ module.exports = {
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DATABASE,
 
-  // dev variables
+  // // dev variables
 
-  migrations: migrations,
-  entities: entities,
-  cli: {
-    entitiesDir: entitiesDir,
-    migrationsDir: migrationsDir
-  }
+  // migrations: migrations,
+  // entities: entities,
+  // cli: {
+  //   entitiesDir: entitiesDir,
+  //   migrationsDir: migrationsDir
+  // }
 
   // local production variable
-  // migrations: migrationsLocalProd,
-  // entities: entitiesLocalProd,
-  // cli: {
-  //   entitiesDir: entitiesDirLocalProd,
-  //   migrationsDir: migrationsDirLocalProd
-  // }
+  migrations: migrationsLocalProd,
+  entities: entitiesLocalProd,
+  cli: {
+    entitiesDir: entitiesDirLocalProd,
+    migrationsDir: migrationsDirLocalProd
+  }
 }

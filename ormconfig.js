@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
-const entitiesDir = process.env.NODE_ENV ? './dist/entities' : './src/entities'
-const entities = process.env.NODE_ENV ? ['./dist/entities/*.js,'] : ['./src/entities/*.ts']
-const migrationsDir = process.env.NODE_ENV ? './dist/migrations' : './src/migrations'
-const migrations = process.env.NODE_ENV ? ['./dist/migrations/*.js'] : ['./src/migrations/*.ts']
+const entitiesDir = process.env.NODE_ENV === 'production' ? './dist/entities' : './src/entities'
+const entities = process.env.NODE_ENV === 'production' ? ['./dist/entities/*.js,'] : ['./src/entities/*.ts']
+const migrationsDir = process.env.NODE_ENV === 'production' ? './dist/migrations' : './src/migrations'
+const migrations = process.env.NODE_ENV === 'production' ? ['./dist/migrations/*.js'] : ['./src/migrations/*.ts']
 
 const entitiesDirLocalProd = './dist/entities'
 const entitiesLocalProd = ['./dist/entities/*.ts']

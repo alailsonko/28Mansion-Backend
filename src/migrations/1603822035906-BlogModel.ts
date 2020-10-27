@@ -4,6 +4,7 @@ export class BlogModel1603822035906 implements MigrationInterface {
   name = 'BlogModel1603822035906'
 
   public async up (queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"')
     await queryRunner.query(`
             CREATE TABLE "users" (
                 "id" uuid NOT NULL DEFAULT uuid_generate_v4(),

@@ -1,20 +1,36 @@
-const entities = process.env.NODE_ENV === 'development' ? './dist/database/entities/*.{js,ts}' : './src/database/entities/*.{js,ts}'
-const migrations = process.env.NODE_ENV === 'development' ? ['./dist/database/migrations/*.{js,ts}'] : ['./src/database/migrations/*.{js,ts}']
-const migrationsDir = process.env.NODE_ENV === 'development' ? './dist/database/migrations' : './src/database/migrations'
-const entitiesDir = process.env.NODE_ENV === 'development' ? './dist/database/entities' : './src/database/entities'
+/* eslint-disable no-unused-vars */
+const entitiesDir = process.env.NODE_ENV ? './dist/entities' : './src/entities'
+const entities = process.env.NODE_ENV ? ['./dist/entities/*.js,'] : ['./src/entities/*.ts']
+const migrationsDir = process.env.NODE_ENV ? './dist/migrations' : './src/migrations'
+const migrations = process.env.NODE_ENV ? ['./dist/migrations/*.js'] : ['./src/migrations/*.ts']
+
+const entitiesDirLocalProd = './dist/entities'
+const entitiesLocalProd = ['./dist/entities/*.ts']
+const migrationsDirLocalProd = './dist/migrations'
+const migrationsLocalProd = ['./dist/migrations/*.ts']
 
 module.exports = {
-  url: process.env.NODE_ENV === 'development' ? process.env.POSTGRES_URI : null,
-  type: `${process.env.POSTGRES_TYPE}`,
-  host: `${process.env.POSTGRES_HOST}`,
-  port: `${process.env.POSTGRES_PORT}`,
-  password: `${process.env.POSTGRES_PASSWORD}`,
-  username: `${process.env.POSTGRES_USERNAME}`,
-  database: `${process.env.POSTGRES_DATABASE}`,
-  entities: entities,
+  type: 'postgres',
+  host: process.env.POSTGRES_HOST,
+  port: process.env.POSTGRES_PORT,
+  username: process.env.POSTGRES_USERNAME,
+  password: process.env.POSTGRES_PASSWORD,
+  database: process.env.POSTGRES_DATABASE,
+
+  // dev variables
+
   migrations: migrations,
+  entities: entities,
   cli: {
-    migrationsDir: migrationsDir,
-    entitiesDir: entitiesDir
+    entitiesDir: entitiesDir,
+    migrationsDir: migrationsDir
   }
+
+  // local production variable
+  // migrations: migrationsLocalProd,
+  // entities: entitiesLocalProd,
+  // cli: {
+  //   entitiesDir: entitiesDirLocalProd,
+  //   migrationsDir: migrationsDirLocalProd
+  // }
 }

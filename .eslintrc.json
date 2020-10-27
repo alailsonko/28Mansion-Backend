@@ -16,8 +16,9 @@
     "@typescript-eslint/no-floating-promises": "off",
     "@typescript-eslint/strict-boolean-expressions": "off",
     "no-unused-vars": ["error", {
-      "argsIgnorePattern": "_"
-    }],
+      "argsIgnorePattern": "{_,req,res}"
+    }
+    ],
     "camelcase":"off",
     "class-methods-use-this": "off",
     "import/extensions": [

@@ -1,14 +1,10 @@
 import { Router } from 'express'
-import SignUpController from '../controllers/SignUpController'
+import UserController from '../controllers/UserController'
 
+const makeUserController = new UserController()
 const routes = Router()
-const makeSignUpController = new SignUpController()
 
-routes.post('/signup', async (req, res) => {
-  // console.log(req)
-  const response = await makeSignUpController.execute(req)
-  // console.log(response)
-  res.status(response.statusCode).json(response.statusMessage)
-})
+routes.post('/signup', makeUserController.SignUp)
+routes.post('/signin', makeUserController.SignIn)
 
 export default routes

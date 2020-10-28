@@ -25,10 +25,7 @@ async function CreateUserService (data: StoredData): Promise<HttpResponse> {
   }
   const passwordHashed = await hash(data.password, 8)
   const targetData = Object.assign(data, { password: passwordHashed })
-  console.log(targetData)
   await usersRepository.save(targetData)
-  console.log(targetData)
-
   return { statusCode: 200, statusMessage: 'user created successfully' }
 }
 

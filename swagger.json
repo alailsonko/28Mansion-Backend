@@ -58,7 +58,7 @@
         "tags": [
             "Authentication"
         ],
-        "summary": "Make user register",
+        "summary": "Make login user",
         "responses": {
           "200": {
             "description": "Login Successfully"

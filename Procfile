@@ -1,3 +1,3 @@
-web: node ./dist/server.js
+web: node ./dist/src/server.js
 
 release: yarn typeorm:prod:run

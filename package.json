@@ -37,7 +37,7 @@
     "typescript": "^4.0.3"
   },
   "scripts": {
-    "start": "node --trace-warnings ./dist/server.js",
+    "start": "node --trace-warnings ./dist/src/server.js",
     "build": "rimraf dist && tsc",
     "dev:server": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
     "dev": "ts-node src/index.ts",

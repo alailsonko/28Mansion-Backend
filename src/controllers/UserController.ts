@@ -1,9 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { Response, Request, RequestHandler } from 'express'
 import { Controller } from '../protocols/Controller.protocol'
 import { CreateUserSchemeValidation, CreateUserSchemeIsValid } from '../services/CreateUserSchemeValidation'
+import { LoginUserSchemeValidation, LoginUserSchemeIsValid } from '../services/LoginUserSchemeValidation'
 import CreateUserService from '../services/CreateUserService'
+import AuthUserService from '../services/AuthUserService'
 
 import { AddAccount } from '../usecases/AddAccount'
+import { LoginUser } from '../usecases/LoginUser'
 
 class UserController implements Controller {
   async SignUp (req: Request, res: Response): Promise<Response<RequestHandler>> {
@@ -22,7 +26,16 @@ class UserController implements Controller {
   }
 
   async SignIn (req: Request, res: Response): Promise<Response<RequestHandler>> {
-    return res.status(200).json(req.body)
+    const LoginUser = req.body
+    const { statusCode, statusMessage } = await LoginUserSchemeValidation(LoginUser)
+    const { email, password } = statusMessage as LoginUser
+    const isValid = await LoginUserSchemeIsValid(statusMessage)
+
+    if (isValid) {
+      const { statusCode, statusMessage } = await AuthUserService({ email, password })
+      return res.status(statusCode).json(statusMessage)
+    }
+    return res.status(statusCode).json(statusMessage)
   }
 }
 

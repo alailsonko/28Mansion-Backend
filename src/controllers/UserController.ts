@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Response, Request, RequestHandler } from 'express'
-import { Controller } from '../protocols/Controller.protocol'
+import { IUserController } from '../protocols/Controllers.protocol'
 import { CreateUserSchemeValidation, CreateUserSchemeIsValid } from '../services/CreateUserSchemeValidation'
 import { LoginUserSchemeValidation, LoginUserSchemeIsValid } from '../services/LoginUserSchemeValidation'
 import CreateUserService from '../services/CreateUserService'
@@ -9,7 +9,7 @@ import AuthUserService from '../services/AuthUserService'
 import { AddAccount } from '../usecases/AddAccount'
 import { LoginUser } from '../usecases/LoginUser'
 
-class UserController implements Controller {
+class UserController implements IUserController {
   async SignUp (req: Request, res: Response): Promise<Response<RequestHandler>> {
     const addAccount = req.body
     const { statusCode, statusMessage } = await CreateUserSchemeValidation(addAccount)

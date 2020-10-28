@@ -1,0 +1,130 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+      "version": "1.0.0",
+      "title": "Seans-TypeScript-NodeJS-CRUD-REST-API-Boilerplate",
+      "description": "A minimal and easy to follow example of what you need to create a CRUD style API in NodeJs using TypeScript",
+      "license": {
+          "name": "MIT",
+          "url": "https://opensource.org/licenses/MIT"
+      }
+  },
+  "servers": [
+      {
+          "url": "/",
+          "description": "Local Dev, or from Heroku"
+      }
+  ],
+  "tags": [
+      {
+          "name": "Authentication",
+          "description": "API for user authentication"
+      }
+  ],
+  "paths": {
+
+    "/signup": {
+      "post": {
+          "tags": [
+              "Authentication"
+          ],
+          "summary": "Make user register",
+          "responses": {
+            "200": {
+              "description": "created user successfully"
+            },
+            "400": {
+              "description": "missing params"
+            }
+          },
+          "requestBody": {
+            "required": true,
+             "description": "required data for register",
+              "content": {
+                  "description": {
+                    "schema":{
+                      "$ref":  "#/components/schemas/AddAccount",
+                     "example": {
+                        "$ref":  "#/components/schemas/AddAccount"
+                      }
+                    }
+                  }
+              }
+          }
+      }
+  } ,
+       "/signin": {
+    "post": {
+        "tags": [
+            "Authentication"
+        ],
+        "summary": "Make user register",
+        "responses": {
+          "200": {
+            "description": "Login Successfully"
+          },
+          "400": {
+            "description": "Invalid email/password combination"
+          }
+        },
+        "requestBody": {
+          "required": true,
+           "description": "required data for login",
+            "content": {
+                "description": {
+                  "schema":{
+                    "$ref":  "#/components/schemas/UserLogin",
+                   "example": {
+                      "$ref":  "#/components/schemas/UserLogin"
+                    }
+                  }
+                }
+            }
+        }
+    }
+}
+  },
+  "components": {
+    "schemas": {
+      "AddAccount": {
+        "example": {
+          "username": "valid_username",
+          "email": "valid_email@mail.com",
+          "password": "valid_password",
+          "passwordConfirm": "valid_password"
+        },
+        "required": ["username", "email", "password", "passwordConfirm"],
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "passwordConfirm": {
+            "type": "string"
+          }
+        }
+      },
+      "UserLogin": {
+        "example": {
+          "email": "valid_email@mail.com",
+          "password": "valid_password"
+        },
+        "required": ["email", "password"],
+        "properties": {
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+
+}

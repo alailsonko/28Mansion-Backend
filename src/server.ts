@@ -2,7 +2,8 @@ import { createConnection } from 'typeorm'
 import * as bodyParser from 'body-parser'
 import 'reflect-metadata'
 import dotenv from 'dotenv'
-
+import swaggerUi from 'swagger-ui-express'
+import * as swaggerDocument from '../swagger.json'
 import express from 'express'
 import 'express-async-errors'
 import process from 'process'
@@ -18,10 +19,7 @@ createConnection()
     app.use(bodyParser.json())
     app.use(routes)
     console.info('connected ', connection.isConnected)
-    // Set all routes from routes folder
-    app.use('/signup', (req, res) => {
-      return res.status(200).json(req.body)
-    })
+    app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
     app.listen(process.env.PORT, () => {
       console.log(`Server is running is port ${process.env.PORT}`)

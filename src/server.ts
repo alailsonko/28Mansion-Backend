@@ -17,7 +17,7 @@ createConnection()
     // Call midlewares
     app.use(bodyParser.json())
     app.use(routes)
-    console.log(connection.isConnected)
+    console.info('connected ', connection.isConnected)
     // Set all routes from routes folder
     app.use('/signup', (req, res) => {
       return res.status(200).json(req.body)

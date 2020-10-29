@@ -4,10 +4,10 @@ const entities = process.env.NODE_ENV === 'production' ? ['./dist/entities/*.js,
 const migrationsDir = process.env.NODE_ENV === 'production' ? './dist/migrations' : './src/migrations'
 const migrations = process.env.NODE_ENV === 'production' ? ['./dist/migrations/*.js'] : ['./src/migrations/*.ts']
 
-const entitiesDirLocalProd = './dist/entities'
-const entitiesLocalProd = ['./dist/entities/*.js']
-const migrationsDirLocalProd = './dist/migrations'
-const migrationsLocalProd = ['./dist/migrations/*.js']
+const entitiesDirLocalProd = './dist/src/entities'
+const entitiesLocalProd = ['./dist/src/entities/*.js']
+const migrationsDirLocalProd = './dist/src/migrations'
+const migrationsLocalProd = ['./dist/src/migrations/*.js']
 
 module.exports = {
   type: 'postgres',

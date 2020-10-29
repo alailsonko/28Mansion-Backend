@@ -13,7 +13,8 @@ import Comment from './Comment'
 export enum PostStatus {
   PUBLIC = 'public',
   PRIVATE = 'private',
-  OUTDATED = 'outdated'
+  OUTDATED = 'outdated',
+  UNKNOW = 'unknow'
 }
 
 @Entity('posts')

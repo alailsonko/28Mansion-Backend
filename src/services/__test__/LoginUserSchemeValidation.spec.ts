@@ -1,4 +1,4 @@
-import { LoginUserSchemeValidation, LoginUserSchemeIsValid } from '../LoginUserSchemeValidation'
+import { LoginUserSchemeValidation, LoginUserSchemeIsValid } from '../SchemeValidation/LoginUserSchemeValidation'
 import { LoginUser } from '../../usecases/LoginUser'
 
 describe('LoginUserSchemeValidation', () => {

@@ -1,4 +1,4 @@
-import { CreateUserSchemeValidation } from '../CreateUserSchemeValidation'
+import { CreateUserSchemeValidation } from '../SchemeValidation/CreateUserSchemeValidation'
 
 describe('CreateUserSchemeValidation', () => {
   test('should return an error case username is invalid', async () => {

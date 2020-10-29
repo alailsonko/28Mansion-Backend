@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { Response, Request, RequestHandler } from 'express'
 import { IUserController } from '../protocols/Controllers.protocol'
-import { CreateUserSchemeValidation, CreateUserSchemeIsValid } from '../services/CreateUserSchemeValidation'
-import { LoginUserSchemeValidation, LoginUserSchemeIsValid } from '../services/LoginUserSchemeValidation'
+import { CreateUserSchemeValidation, CreateUserSchemeIsValid } from '../services/SchemeValidation/CreateUserSchemeValidation'
+import { LoginUserSchemeValidation, LoginUserSchemeIsValid } from '../services/SchemeValidation/LoginUserSchemeValidation'
 import CreateUserService from '../services/CreateUserService'
 import AuthUserService from '../services/AuthUserService'
 

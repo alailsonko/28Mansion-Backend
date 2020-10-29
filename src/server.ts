@@ -12,17 +12,21 @@ import routes from './routes'
 // Connects to the Database -> then starts the express
 createConnection()
   .then(async connection => {
-    // Create a new express application instance
-    const app = express()
-    dotenv.config()
-    // Call midlewares
-    app.use(bodyParser.json())
-    app.use(routes)
-    console.info('connected ', connection.isConnected)
-    app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+    try {
+      const app = express()
+      dotenv.config()
+      // Call midlewares
+      app.use(bodyParser.json())
+      app.use(routes)
+      console.info('connected ', connection.isConnected)
+      app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
-    app.listen(process.env.PORT, () => {
-      console.log(`Server is running is port ${process.env.PORT}`)
-    })
+      app.listen(process.env.PORT, () => {
+        console.log(`Server is running is port ${process.env.PORT}`)
+      })
+    } catch (error) {
+      console.log(error)
+    }
+    // Create a new express application instance
   })
   .catch(error => console.log(error))

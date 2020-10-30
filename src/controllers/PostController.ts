@@ -1,19 +1,27 @@
 import { Response, Request, RequestHandler } from 'express'
 import { PostSchemeValidation, PostSchemeIsValid } from '../services/SchemeValidation/PostSchemeValidation'
 import CreatePostService from '../services/CreatePostService'
+import GetAllPostsOrderedByCreatedDateTimeService from '../services/GetAllPostsOrderedByCreatedDateTimeService'
+import GetPostByIdService from '../services/GetPostByIdService'
 import { IPostController } from '../protocols/Controllers.protocol'
 
+let getPostByIdCache = null
 class PostController implements IPostController {
   async GetAllPosts (req: Request, res: Response): Promise<Response<RequestHandler>> {
-    const data = req.body
-    console.log(data)
-    return res.status(200).json({ msg: 'ok from GetAllPosts' })
+    const { statusCode, statusMessage } = await GetAllPostsOrderedByCreatedDateTimeService()
+
+    return res.status(statusCode).json(statusMessage)
   }
 
   async GetPostById (req: Request, res: Response): Promise<Response<RequestHandler>> {
-    const data = req.body
-    console.log(data)
-    return res.status(200).json({ msg: 'ok from GetPostById' })
+    const idParam = req.params.id
+    if (getPostByIdCache && getPostByIdCache.id === idParam) {
+      return res.status(200).json(getPostByIdCache)
+    }
+    const { statusCode, statusMessage } = await GetPostByIdService(idParam)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    getPostByIdCache = statusMessage
+    return res.status(statusCode).json(statusMessage)
   }
 
   async CreateNewPost (req: Request, res: Response): Promise<Response<RequestHandler>> {

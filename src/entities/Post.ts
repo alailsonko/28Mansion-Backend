@@ -62,7 +62,8 @@ class Post {
   updatedAt: Date
 
   @ManyToOne(() => User, user => user.posts, {
-    onDelete: 'CASCADE'
+    onDelete: 'CASCADE',
+    eager: true
   })
   user: User
 

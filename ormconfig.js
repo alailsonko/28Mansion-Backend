@@ -19,18 +19,18 @@ module.exports = {
 
   // // dev variables
 
-  migrations: migrations,
-  entities: entities,
-  cli: {
-    entitiesDir: entitiesDir,
-    migrationsDir: migrationsDir
-  }
+  // migrations: migrations,
+  // entities: entities,
+  // cli: {
+  //   entitiesDir: entitiesDir,
+  //   migrationsDir: migrationsDir
+  // }
 
   // local production variable
-  // migrations: migrationsLocalProd,
-  // entities: entitiesLocalProd,
-  // cli: {
-  //   entitiesDir: entitiesDirLocalProd,
-  //   migrationsDir: migrationsDirLocalProd
-  // }
+  migrations: migrationsLocalProd,
+  entities: entitiesLocalProd,
+  cli: {
+    entitiesDir: entitiesDirLocalProd,
+    migrationsDir: migrationsDirLocalProd
+  }
 }

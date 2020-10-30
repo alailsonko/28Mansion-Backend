@@ -6,7 +6,7 @@ const makePostController = new PostController()
 
 const postsRouter = Router()
 
-postsRouter.use(ensureAuthentication)
+postsRouter.use('/posts', ensureAuthentication)
 
 // get all posts
 postsRouter.get('/posts', makePostController.GetAllPosts)

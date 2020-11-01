@@ -1,7 +1,7 @@
 # 28Mansion-Backend
 Server-Side of 28Mansion Web Application. related stacks are NodeJs/Typescrpt. TDD as a methodology of development.
 
-## API Documentation [link](https://socialmedia-28mansion.herokuapp.com/)
+## API Documentation [link](https://socialmedia-28mansion.herokuapp.com/api/v1/swagger)
 ## How to run this application
 
 clone repository

@@ -1,130 +1,209 @@
 {
-  "openapi": "3.0.0",
-  "info": {
-      "version": "1.0.0",
-      "title": "28mansion - Documentation API",
-      "description": "guide of API routes",
-      "license": {
-          "name": "MIT",
-          "url": "https://opensource.org/licenses/MIT"
-      }
-  },
-  "servers": [
-      {
-          "url": "/",
-          "description": "Local Dev, or from Heroku"
-      }
-  ],
-  "tags": [
-      {
-          "name": "Authentication",
-          "description": "API for user authentication"
-      }
-  ],
-  "paths": {
-
-    "/signup": {
-      "post": {
-          "tags": [
-              "Authentication"
-          ],
-          "summary": "Make user register",
-          "responses": {
-            "200": {
-              "description": "created user successfully"
-            },
-            "400": {
-              "description": "missing params"
-            }
-          },
-          "requestBody": {
-            "required": true,
-             "description": "required data for register",
-              "content": {
-                  "description": {
-                    "schema":{
-                      "$ref":  "#/components/schemas/AddAccount",
-                     "example": {
-                        "$ref":  "#/components/schemas/AddAccount"
-                      }
-                    }
-                  }
-              }
-          }
-      }
-  } ,
-       "/signin": {
-    "post": {
-        "tags": [
-            "Authentication"
-        ],
-        "summary": "Make login user",
-        "responses": {
-          "200": {
-            "description": "Login Successfully"
-          },
-          "400": {
-            "description": "Invalid email/password combination"
-          }
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "28mansion - Documentation API",
+        "description": "guide of API routes",
+        "license": {
+            "name": "MIT",
+            "url": "https://opensource.org/licenses/MIT"
+        }
+    },
+    "servers": [
+        {
+            "url": "https://socialmedia-28mansion.herokuapp.com/",
+            "description": "Heroku"
         },
-        "requestBody": {
-          "required": true,
-           "description": "required data for login",
-            "content": {
-                "description": {
-                  "schema":{
-                    "$ref":  "#/components/schemas/UserLogin",
-                   "example": {
-                      "$ref":  "#/components/schemas/UserLogin"
+        {
+            "url": "http://localhost:process.env.PORT/",
+            "description": "Local"
+        }
+    ],
+    "tags": [
+        {
+            "name": "Authentication",
+            "description": "user authentication"
+        },
+        {
+            "name": "Posts",
+            "description": "posts methods"
+        }
+    ],
+    "paths": {
+        "/api/v1/posts/": {
+            "get": {
+                "tags": [
+                    "Posts"
+                ],
+                "summary": "get all posts",
+                "responses": {
+                    "200": {
+                        "description": "fectch all posts"
                     }
-                  }
+                }
+            }
+        },
+        "/api/v1/posts/:id": {
+          "get": {
+            "tags": [
+                "Posts"
+            ],
+            "summary": "get post by id",
+            "responses": {
+                "200": {
+                    "description": "post"
+                }
+            }
+        }
+        },
+        "/api/v1/posts/ - create new post": {
+          "post": {
+            "tags": [
+                "Posts"
+            ],
+            "summary": "create post",
+            "responses": {
+                "200": {
+                    "description": "post"
+                }
+            }
+        }
+        },
+        "/api/v1/posts - update post": {
+          "put": {
+            "tags": [
+                "Posts"
+            ],
+            "summary": "update post by id",
+            "responses": {
+                "200": {
+                    "description": "post"
+                }
+            }
+        }
+        },
+        "/api/v1/posts - delete post": {
+          "delete": {
+            "tags": [
+                "Posts"
+            ],
+            "summary": "update post by id",
+            "responses": {
+                "200": {
+                    "description": "post"
+                }
+            }
+        }
+        },
+        "/api/v1/signup": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Make user register",
+                "responses": {
+                    "200": {
+                        "description": "created user successfully"
+                    },
+                    "400": {
+                        "description": "missing params"
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "description": "required data for register",
+                    "content": {
+                        "description": {
+                            "schema": {
+                                "$ref": "#/components/schemas/AddAccount",
+                                "example": {
+                                    "$ref": "#/components/schemas/AddAccount"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/signin": {
+            "post": {
+                "tags": [
+                    "Authentication"
+                ],
+                "summary": "Make login user",
+                "responses": {
+                    "200": {
+                        "description": "Login Successfully"
+                    },
+                    "400": {
+                        "description": "Invalid email/password combination"
+                    }
+                },
+                "requestBody": {
+                    "required": true,
+                    "description": "required data for login",
+                    "content": {
+                        "description": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserLogin",
+                                "example": {
+                                    "$ref": "#/components/schemas/UserLogin"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "AddAccount": {
+                "example": {
+                    "username": "valid_username",
+                    "email": "valid_email@mail.com",
+                    "password": "valid_password",
+                    "passwordConfirm": "valid_password"
+                },
+                "required": [
+                    "username",
+                    "email",
+                    "password",
+                    "passwordConfirm"
+                ],
+                "properties": {
+                    "username": {
+                        "type": "string"
+                    },
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    },
+                    "passwordConfirm": {
+                        "type": "string"
+                    }
+                }
+            },
+            "UserLogin": {
+                "example": {
+                    "email": "valid_email@mail.com",
+                    "password": "valid_password"
+                },
+                "required": [
+                    "email",
+                    "password"
+                ],
+                "properties": {
+                    "email": {
+                        "type": "string"
+                    },
+                    "password": {
+                        "type": "string"
+                    }
                 }
             }
         }
     }
-}
-  },
-  "components": {
-    "schemas": {
-      "AddAccount": {
-        "example": {
-          "username": "valid_username",
-          "email": "valid_email@mail.com",
-          "password": "valid_password",
-          "passwordConfirm": "valid_password"
-        },
-        "required": ["username", "email", "password", "passwordConfirm"],
-        "properties": {
-          "username": {
-            "type": "string"
-          },
-          "email": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
-          },
-          "passwordConfirm": {
-            "type": "string"
-          }
-        }
-      },
-      "UserLogin": {
-        "example": {
-          "email": "valid_email@mail.com",
-          "password": "valid_password"
-        },
-        "required": ["email", "password"],
-        "properties": {
-          "email": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
-          }
-        }
-      }
-    }
-  }
-
 }

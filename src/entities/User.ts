@@ -3,10 +3,8 @@ import {
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
-  UpdateDateColumn,
-  OneToMany
+  UpdateDateColumn
 } from 'typeorm'
-import Post from './Post'
 
 @Entity('users')
 class User {
@@ -49,9 +47,6 @@ class User {
     type: 'timestamp'
   })
   updatedAt: Date
-
-  @OneToMany(() => Post, post => post.user)
-  posts: Post[]
 }
 
 export default User

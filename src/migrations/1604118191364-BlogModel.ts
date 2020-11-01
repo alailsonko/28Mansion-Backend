@@ -1,10 +1,9 @@
 import { MigrationInterface, QueryRunner } from 'typeorm'
 
-export class BlogModel1603822035906 implements MigrationInterface {
-  name = 'BlogModel1603822035906'
+export class BlogModel1604118191364 implements MigrationInterface {
+  name = 'BlogModel1604118191364'
 
   public async up (queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.query('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"')
     await queryRunner.query(`
             CREATE TABLE "users" (
                 "id" uuid NOT NULL DEFAULT uuid_generate_v4(),
@@ -18,7 +17,7 @@ export class BlogModel1603822035906 implements MigrationInterface {
             )
         `)
     await queryRunner.query(`
-            CREATE TYPE "posts_status_enum" AS ENUM('public', 'private', 'outdated')
+            CREATE TYPE "posts_status_enum" AS ENUM('public', 'private', 'outdated', 'unknow')
         `)
     await queryRunner.query(`
             CREATE TABLE "posts" (

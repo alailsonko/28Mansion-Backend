@@ -63,8 +63,9 @@ class Comment {
   })
   updatedAt: Date
 
-  @ManyToOne(() => Post, post => post.comments, {
-    onDelete: 'CASCADE'
+  @ManyToOne(() => Post, post => post.id, {
+    onDelete: 'CASCADE',
+    eager: true
   })
   post: Post
 }

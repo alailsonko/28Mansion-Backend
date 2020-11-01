@@ -4,11 +4,9 @@ import {
   PrimaryGeneratedColumn,
   CreateDateColumn,
   UpdateDateColumn,
-  ManyToOne,
-  OneToMany
+  ManyToOne
 } from 'typeorm'
 import User from './User'
-import Comment from './Comment'
 
 export enum PostStatus {
   PUBLIC = 'public',
@@ -61,14 +59,11 @@ class Post {
   })
   updatedAt: Date
 
-  @ManyToOne(() => User, user => user.posts, {
-    onDelete: 'CASCADE',
-    eager: true
+  @ManyToOne(() => User, user => user.id, {
+    eager: true,
+    onDelete: 'CASCADE'
   })
   user: User
-
-  @OneToMany(() => Comment, comment => comment.post)
-  comments?: Comment[]
 }
 
 export default Post

@@ -69,7 +69,7 @@
             }
         }
         },
-        "/api/v1/posts - update post": {
+        "/api/v1/posts/:id - update post": {
           "put": {
             "tags": [
                 "Posts"
@@ -82,7 +82,7 @@
             }
         }
         },
-        "/api/v1/posts - delete post": {
+        "/api/v1/posts/:id - delete post": {
           "delete": {
             "tags": [
                 "Posts"

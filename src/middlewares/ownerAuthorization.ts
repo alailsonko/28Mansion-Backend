@@ -1,39 +1,26 @@
 /* eslint-disable @typescript-eslint/no-invalid-void-type */
 import { Request, Response, NextFunction } from 'express'
-import { verify } from 'jsonwebtoken'
 
-import authConfig from '../config/auth'
+import { getRepository } from 'typeorm'
+import Post from '../entities/Post'
 
 interface HttpResponse {
   statusCode: number
   statusMessage: any
 }
 
-interface TokenPayload {
-  iat: number
-  exp: number
-  sub: string
-}
-
-export default function ownerAuthorization (
+export default async function ownerAuthorization (
   req: Request,
   res: Response,
   next: NextFunction
-): HttpResponse | void {
-  const authHeader = req.headers.authorization
-
-  if (!authHeader) {
-    return res.status(403).json('JWT token is missing')
-  }
-
-  const [, token] = authHeader.split(' ')
+): Promise<HttpResponse | void> {
   try {
-    const decoded = verify(token, authConfig.jwt.secret)
+    const postsRepository = getRepository(Post)
+    console.log('here is coming')
+    const findPost = await postsRepository.findOne({ id: req.params.id })
 
-    const { sub } = decoded as TokenPayload
-
-    if (req.body.user.id !== sub) {
-      return res.status(403).json('Not authorized')
+    if (req.body.user.id !== findPost.user.id) {
+      return res.status(403).json('Not allowed from middleware')
     }
 
     return next()

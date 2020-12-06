@@ -71,10 +71,6 @@ class PostController implements IPostController {
   }
 
   async DeletePost (req: Request, res: Response): Promise<Response<RequestHandler>> {
-    const user = req.body
-    console.log(user)
-    console.log(user)
-    console.log(user)
     const idParam = req.params.id
     const { statusCode, statusMessage } = await DeletePostService(idParam)
     getAllPostCache = null

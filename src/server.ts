@@ -6,6 +6,7 @@ import express from 'express'
 import 'express-async-errors'
 import process from 'process'
 import routes from './routes'
+import cors from 'cors'
 
 // Connects to the Database -> then starts the express
 createConnection()
@@ -14,7 +15,9 @@ createConnection()
       const app = express()
       dotenv.config()
       // Call midlewares
+      app.use(cors())
       app.use(bodyParser.json())
+
       console.info('connected ', connection.isConnected)
       app.use(routes)
       app.listen(process.env.PORT, () => {

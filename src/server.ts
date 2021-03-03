@@ -14,6 +14,7 @@ createConnection()
     try {
       const app = express()
       dotenv.config()
+
       // Call midlewares
       app.use(cors())
       app.use(bodyParser.json())

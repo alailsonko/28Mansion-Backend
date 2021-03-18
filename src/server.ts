@@ -13,7 +13,6 @@ createConnection()
   .then(async connection => {
     try {
       const app = express()
-
       dotenv.config()
 
       // Call midlewares

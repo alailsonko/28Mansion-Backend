@@ -16,6 +16,9 @@ module.exports = {
   username: process.env.POSTGRES_USERNAME,
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DATABASE,
+  extra: {
+    ssl: true
+  },
 
   // // dev variables
 
